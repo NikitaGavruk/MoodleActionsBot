@@ -9,4 +9,11 @@ class TestClass {
             .loginToMoodle();
     }
 
+    @Test
+    void connectToWebinar() {
+        new MoodlePage().getMoodleSite()
+            .loginToMoodle()
+            .connectToWebinar();
+    }
+
 }

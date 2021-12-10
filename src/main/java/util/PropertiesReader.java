@@ -20,6 +20,10 @@ public class PropertiesReader {
         getProperties();
         return getProperties().getProperty("moodleLink");
     }
+    public static String getMoodleWebinar() {
+        getProperties();
+        return getProperties().getProperty("moodleWebinar");
+    }
 
     public static Properties getProperties() {
         String appConfigPath = "./src/test/resources/config.properties";

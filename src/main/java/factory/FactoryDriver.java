@@ -1,10 +1,11 @@
 package factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.stereotype.Component;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FactoryDriver {
 
@@ -16,12 +17,13 @@ public class FactoryDriver {
 
     public static WebDriver getDriver() {
         if (null == driver) {
-            if ("firefox".equals(System.getProperty("browser"))) {
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-            }
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("profile.default_content_setting_values.media_stream_mic", 2);
+            prefs.put("profile.default_content_setting_values.media_stream_camera", 2);
+            ChromeOptions options = new ChromeOptions();
+            options.setExperimentalOption("prefs", prefs);
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
         return driver;
