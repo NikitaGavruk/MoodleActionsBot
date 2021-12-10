@@ -1,11 +1,9 @@
 package page;
 
-import factory.FactoryDriver;
 import java.time.Duration;
 import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,7 +13,7 @@ import util.PropertiesReader;
 
 @Component
 @PropertySource("classpath:database.properties")
-public class MoodlePage {
+public class MoodlePage extends AbstractPage {
     private static final By LOGIN_FIELD = By.xpath("//input[@id='username']");
     private static final By PASSWORD_FIELD = By.xpath("//input[@id='password']");
     private static final By LOGIN_BUTTON = By.xpath("//button[@id='loginbtn']");
@@ -27,8 +25,6 @@ public class MoodlePage {
     String userPassword = PropertiesReader.getPassword();
     String moodle = PropertiesReader.getMoodleLink();
     String moodleWebinar = PropertiesReader.getMoodleWebinar();
-    WebDriver driver = FactoryDriver.getDriver();
-    private final WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(4));
 
     public MoodlePage getMoodleSite() {
         driver.get(moodle);
