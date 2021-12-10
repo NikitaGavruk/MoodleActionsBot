@@ -23,8 +23,6 @@ public class MoodlePage {
     private static final By WITHOUT_MICRO =
         By.xpath("//button[@class='jumbo--Z12Rgj4 buttonWrapper--x8uow audioBtn--1H6rCK'][2]");
     private static final By MESSAGE_CHAT = By.id("message-input");
-    private static final By SEND_MESSAGE =
-        By.xpath("//span[@class='button--Z2dosza md--Q7ug4 primary--1IbqAO circle--Z2c8umk']");
     String userLogin = PropertiesReader.getUserName();
     String userPassword = PropertiesReader.getPassword();
     String moodle = PropertiesReader.getMoodleLink();
@@ -68,8 +66,12 @@ public class MoodlePage {
         for (int i = 0; i < 10; i++) {
             waitElementForVisibility(WITHOUT_MICRO).click();
         }
-        //waitElementForVisibility(MESSAGE_CHAT).sendKeys("Hello)))");
-       // waitElementForVisibility(MESSAGE_CHAT).sendKeys(Keys.ENTER);
+        return this;
+    }
+
+    public MoodlePage sendMessage(String message) {
+        waitElementForVisibility(MESSAGE_CHAT).sendKeys(message);
+        waitElementForVisibility(MESSAGE_CHAT).sendKeys(Keys.ENTER);
         return this;
     }
 
