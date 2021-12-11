@@ -1,5 +1,8 @@
 package page;
 
+import factory.FactoryDriver;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import locators.MoodlePageLocators;
 import org.openqa.selenium.By;
@@ -8,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import util.PropertiesReader;
 
 @Component
 @PropertySource("classpath:database.properties")
@@ -48,6 +52,13 @@ public class MoodlePage extends AbstractPage {
         waitElementForVisibility(MoodlePageLocators.getMessageChat()).sendKeys(message);
         waitElementForVisibility(MoodlePageLocators.getMessageChat()).sendKeys(Keys.ENTER);
         return this;
+    }
+
+    public void sittingWebinar() {
+        while (LocalTime.now().isBefore(LocalTime.parse(PropertiesReader.getWebinarEndTime(),
+            DateTimeFormatter.ISO_TIME))) {
+        }
+        FactoryDriver.closeDriver();
     }
 
     public WebElement waitElementForVisibility(By locator) {

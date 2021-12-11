@@ -2,7 +2,6 @@ package util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Properties;
 
 public class PropertiesReader {
@@ -20,14 +19,18 @@ public class PropertiesReader {
         getProperties();
         return getProperties().getProperty("moodleLink");
     }
+
     public static String getMoodleWebinar() {
         getProperties();
         return getProperties().getProperty("moodleWebinar");
     }
-    public static String getMicroState() {
+
+
+    public static String getWebinarEndTime() {
         getProperties();
-        return getProperties().getProperty("moodleWebinarMicro");
+        return getProperties().getProperty("moodleWebinarEndTime");
     }
+
 
     public static Properties getProperties() {
         String appConfigPath = "./src/test/resources/config.properties";

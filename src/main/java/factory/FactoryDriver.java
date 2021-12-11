@@ -28,5 +28,10 @@ public class FactoryDriver {
         }
         return driver;
     }
+
+    public static void closeDriver() {
+        driver.close();
+        driver = null;
+    }
 }
 

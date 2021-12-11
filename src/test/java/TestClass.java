@@ -13,7 +13,8 @@ class TestClass {
     void connectToWebinar() {
         new MoodlePage().getMoodleSite()
             .loginToMoodle()
-            .connectToWebinar();
+            .connectToWebinar()
+            .sittingWebinar();
     }
 
 }
