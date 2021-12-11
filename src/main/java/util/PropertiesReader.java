@@ -24,6 +24,10 @@ public class PropertiesReader {
         getProperties();
         return getProperties().getProperty("moodleWebinar");
     }
+    public static String getMicroState() {
+        getProperties();
+        return getProperties().getProperty("moodleWebinarMicro");
+    }
 
     public static Properties getProperties() {
         String appConfigPath = "./src/test/resources/config.properties";
